@@ -1,0 +1,28 @@
+import discord
+from discord.ext import commands
+import requests
+import json
+client = commands.Bot(command_prefix = '!')
+
+@client.event
+async def on_ready():
+print('HACKARRRR BOT READY!!!!')
+
+
+@client.command()
+async def weleakinfo(ctx,option,valuess):
+frs = requests.get("https://api.weleakinfo.to/api?value=" + valuess + "&type=" + option + "&key=INSERT KEY HERE");#write the api in there
+bfrs = frs.json()
+#in 1 write in the index of the json in 2 write in what value you wanna pull out
+await ctx.send(bfrs['success'])
+await ctx.send(str(bfrs['result']))
+await ctx.send("found "+ str(bfrs['found']))
+
+
+
+@client.command()
+async def heythere(ctx):
+await ctx.send('it works')
+
+
+client.run('ODQ4OTYxNzcwNjkyNTQyNDc3.YLUPQw._ewC5PGY9XNziXA_jRq-7OfQWc4')
